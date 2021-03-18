@@ -1,0 +1,1 @@
+javascript:apex.confirm('Are you sure you want to place this order?','PLACE_ORDER');

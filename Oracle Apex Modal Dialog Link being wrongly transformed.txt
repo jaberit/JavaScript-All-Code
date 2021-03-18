@@ -1,0 +1,17 @@
+Oracle Apex Modal Dialog Link being wrongly transformed
+Classic Report Region,
+
+============== 1st ======================
+
+SELECT
+...,
+APEX_UTIL.PREPARE_URL(
+    p_url => 'f?p=' || :APP_ALIAS || ':40:' || :APP_SESSION ||'::NO::P40_VIDEOID:' || mytable.video_id,
+    p_checksum_type => 'SESSION') as url
+FROM
+mytable
+
+================== 2nd ======================
+<a href="#URL#">
+    <img src="https://img.youtube.com/vi/#VIDEOID#/mqdefault.jpg" width="210" height="118"> 
+</a>

@@ -1,0 +1,12 @@
+1.  javascript:window.open('f?p=&APP_ID.:84:&APP_SESSION.:::84:P84_OID:#OID#')
+2.  javascript:window.open('f?p=&APP_ID.:73:&APP_SESSION.:::73:P73_INVNO:#INVNO#')
+3.  javascript:window.open('f?p=&APP_ID.:1:&SESSION.:::1:P1_ID:'+$v("P844_ID")+','_blank');
+4.  javascript:window.open(‘f?p=&APP_ID.:1001:&SESSION.:::1001:P1001_CPY_ID,P1001_M_ID,
+	P1001_A_ID,P1001_FORMAT,P1001_REPORT_PAGE_NO:’+$v(“P1003_CPY_ID”)+’,
+	‘+$v(“P1003_M_ID”)+’,’+$v(“P1003_A_ID”)+’,VIEW,1003′,’_blank’);
+Right:- 
+5.   javascript:window.open('f?p=&APP_ID.:96:&SESSION.::NO:96:P96_INVOICE_NO:'+$v("P46_INVNO")+'');
+
+
+javascript:window.open('f?p=&APP_ID.:96:&SESSION.::NO:96:P96_VOUCHER_NO,:P96_SUPPLIER_NAME:' +$v("P68_VOUCHER_NO")','+$v("P68_SUPPLIER_NAME")+'');
+javascript:window.open('f?p=&APP_ID.:96:&SESSION.::NO:96:P96_VOUCHER_NO:' +$v("P68_VOUCHER_NO")+'');

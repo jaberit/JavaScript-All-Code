@@ -1,0 +1,15 @@
+<script type="text/javascript">
+function getVal(pNd){
+return ($v(pNd)!="")?parseFloat($v(pNd)):0;
+}
+    function calcItems(){
+        $s('P103_SUB_TOTAL',getVal('P103_TOTAL')-getVal('P103_DISCOUNT')+getVal('P103_VAT'));
+}
+    function refund(){
+        $s('P103_REFUND_TO_CUSTOMER_VALUE',getVal('P103_INLINE_CPU')*getVal('P103_INLINE_CHANGE_QTY'));
+}
+    function inlinetotal(){
+        $s('P103_INLINE_TOTAL_VALUE',getVal('P103_INLINE_TOTAL')-getVal('P103_REFUND_TO_CUSTOMER_VALUE'));
+}
+    
+</script>

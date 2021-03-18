@@ -1,0 +1,27 @@
+Oracle Apex Calculate Field Values Using JavaScript
+
+To perform this task, we will create a function in JavaScript so that we can call it from multiple fields and then populate a field with the calculated value. To demonstrate this, I have created a page number 34 in Apex and the following are the fields on it.
+
+P34_SALARY
+P34_BONUS
+P34_TOTAL_SAL
+On page 34, I have created the below JavaScript function to calculate Salary + Bonus as 
+Total Salary in the Function and Global Variable Declare Section in Oracle Apex page:
+
+JavaScript Function to Calculate Total Salary
+
+===========
+function fnc_calcTotalSal() {
+    var n_salary, n_bonus, n_total;
+    
+    n_salary = parseFloat($v("P34_SALARY"), 10) ? parseFloat($v("P34_SALARY"), 10) : 0;
+    
+    n_bonus = parseFloat($v("P34_BONUS"), 10) ? parseFloat($v("P34_BONUS"), 10) : 0; 
+    
+    n_total = n_salary + n_bonus;  
+    
+    $s("P34_TOTAL_SAL", parseFloat(n_total, 10));
+
+}
+=================================
+document.getElementById('P34_TOTAL_SAL').readOnly = true;

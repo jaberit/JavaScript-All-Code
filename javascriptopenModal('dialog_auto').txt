@@ -1,0 +1,29 @@
+1. javascript:openModal('EMPDTLS');
+2. javascript:closeModal('EMPDTLS');
+3. javascript:$s('P1_EMPID',7369);openModal('EMPDTLS');
+4. javascript:$s('P1_EMPID',$v('P1_EMPNO'));openModal('EMPDTLS');
+5. javascript:$s('P1_EMPID','#EMPNO#');openModal('EMPDTLS');
+
+
+
+Solution 1. 
+	.Change button Behavior, Action=> Redirect to URL and Target:
+	  javascript:openModal('dialog_auto')
+	.Create dynamic action on the button:
+	  Event=>click.
+	  selection type=>button
+	  Action=> Execute JavaScript Code
+	.Copy and Paste below code on Execute JavaScript Code:
+	  openModel('region_id');
+Solution 2:-
+	.Copy and paste the following code on Execute JavaScript code and also define affected elements in this solution as per screenshot.
+	  $(this.affectedElements).dialog('open')
+Solution 3:-
+	.Copy and Paste below function on function and global variable declaration section:
+	  function open_dialog(){
+        $('#region_id').dialog('open'); //calling region id here to open
+       }
+	.Call created function in dynamic action as per screenshot:
+	  open_dialog();
+	.We can directly use the created function on button URL also:
+	  javascript:open_dialog();

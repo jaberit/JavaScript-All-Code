@@ -1,0 +1,34 @@
+How to hide regions with javascript in Oracle Apex
+By making use of the JQuery library that ships with Apex, you can do the following:
+
+1) Add a static ID to your target region;
+
+2) Then just create a JQuery function that will hide this region:
+
+function hideRegion(ID) {
+    $(ID).hide();
+}
+Place this code either in your external JS file, or your page-level (or inline) JS (the "Global Variable Declarations.." portion).
+
+3) Then you can call (or execute) this function like so:
+
+hideRegion('#the-static-id');
+note: place this inside of whatever dynamic action you're triggering to hide the region.
+
+4) Then to show it again, create the JQuery function:
+
+function showRegion(ID) {
+    $(ID).show();
+}
+Place this code either in your external JS file, or your page-level (or inline) JS (the "Global Variable Declarations.." portion).
+
+3) Then you can just call this function like so:
+
+showRegion('#the-static-id');
+Now place this inside of whatever dynamic action you're triggering to show the region again.
+
+Why this should work
+
+The .hide() action is quite similar to making the target div have a display:none property in CSS. As such, the other regions should take up the space that was left by the region you hid through the function above. Meanwhile, .show() reverts it to its original display style.
+
+Hope this helps!

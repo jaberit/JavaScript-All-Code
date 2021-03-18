@@ -1,0 +1,5 @@
+if (apex.item("P13_ITEM").isEmpty()) {
+    apex.message.alert("Item is empty");
+} else {
+    apex.message.alert(apex.item("P13_ITEM").getValue());
+}

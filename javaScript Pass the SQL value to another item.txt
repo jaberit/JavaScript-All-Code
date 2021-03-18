@@ -1,0 +1,31 @@
+I want pass SQL data(employee_id) with javaScript function in html button in 
+Oracle APEX. when I click the Html button it will pass the SQL value to another item.
+................
+I dont know who is x? one onpen li and 2 close /li and why you have the end loop? 
+but you need to change this
+.....................
+Htp.p('<li class= "demo">     
+       <a href="f?p=104:2:&SESSION.::&DEBUG.::P2_ID: &V_SUB_MENU_ID" 
+      </li>'||x.SUB_MENU_NAME||'
+       <!-- <span class="badge badge-pill badge-success">Pro</span> -->
+              </a>
+            </li> ');
+
+with
+.......
+ Htp.p('<li class= "demo">     
+          <a href="f?p=104:2:&SESSION.::&DEBUG.::P2_ID:'||V_SUB_MENU_ID || '"> '||V_SUB_MENU_NAME || ' </a>   
+       </li>');
+================================================================
+
+select SUB_MENU_ID,SUB_MENU_NAME into V_SUB_MENU_ID,V_SUB_MENU_NAME from  DPMTS_SUB_MENU
+ where SUB_MENU_ID = x.SUB_MENU_ID
+ Htp.p('<li class= "demo">     
+           <a href="f?p=104:2:&SESSION.::&DEBUG.::P2_ID: &V_SUB_MENU_ID" 
+          </li>'||x.SUB_MENU_NAME||'
+           <!-- <span class="badge badge-pill badge-success">Pro</span> -->
+                  </a>
+                </li> '); 
+                end loop;
+
+

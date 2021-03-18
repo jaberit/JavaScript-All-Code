@@ -1,0 +1,17 @@
+1. Create a item like 
+
+P1_MOBILENO
+
+2.Copy-Pest the code into function and Global variable Declaration 
+
+$( document ).ready(function() {
+
+        $("#P1_MOBILENO").click(function(){
+
+            var lnk='tel:+88'+this.value;
+
+         //   alert(lnk);
+
+            window.open(lnk, '_self');       
+
+});

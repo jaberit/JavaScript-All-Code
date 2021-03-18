@@ -1,0 +1,250 @@
+=================== 1st Sestem ==========================
+Given this HTML (note there are no buttons):
+
+<div style="line-height: 1.5; font-size: 3.2rem; font-weight: 500">
+  <span id="hour">00</span> :
+  <span id="min">00</span> :
+  <span id="sec">00</span> :
+  <span id="milisec">00</span>
+</div>
+===================================================
+Add the following to the Execute when Page Loads attribute of the page. 
+This will create a JavaScript module (revealing module pattern) that only exposes 
+two functions which are later added as global methods on the window object:
+
+var timerModule = (function() {
+  var startElmtId = 'START';
+  var miliSecElmtId = 'milisec';
+  var secElmtId = 'sec';
+  var minElmtId = 'min';
+  var hourElmtId = 'hour';
+
+  var $startBtn = $('#' + startElmtId);
+  var timerRef;
+
+  var milisec = 0;
+  var sec = 0;
+  var min = 0;
+  var hour = 0;
+
+  var miliSecOut = 0;
+  var miliSecElmt = document.getElementById(miliSecElmtId);
+  var secOut = 0;
+  var secElmt = document.getElementById(secElmtId);
+  var minOut = 0;
+  var minElmt = document.getElementById(minElmtId);
+  var hourOut = 0;
+  var hourElmt = document.getElementById(hourElmtId);
+
+  function startStop() {
+    if (timerRef === undefined) {
+      $startBtn.children('span').text("Stop");
+      start();
+    } else {
+      $startBtn.children('span').text("Start");
+      stop();
+    }
+  }
+
+  function start() {
+    timerRef = setInterval(timer, 10);
+  }
+
+  function stop() {
+    clearInterval(timerRef);
+    timerRef = undefined;
+  }
+
+  function timer() {
+    miliSecOut = checkTime(milisec);
+    secOut = checkTime(sec);
+    minOut = checkTime(min);
+    hourOut = checkTime(hour);
+
+    milisec = ++milisec;
+
+    if (milisec === 100) {
+      milisec = 0;
+      sec = ++sec;
+    }
+
+    if (sec == 60) {
+      min = ++min;
+      sec = 0;
+    }
+
+    if (min == 60) {
+      min = 0;
+      hour = ++hour;
+    }
+
+    miliSecElmt.innerHTML = miliSecOut;
+    secElmt.innerHTML = secOut;
+    minElmt.innerHTML = minOut;
+    hourElmt.innerHTML = hourOut;
+  }
+
+  /* Adds 0 when value is <10 */
+  function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
+
+  function reset() {
+    milisec = 0;
+    sec = 0;
+    min = 0
+    hour = 0;
+
+    miliSecElmt.innerHTML = "00";
+    secElmt.innerHTML = "00";
+    minElmt.innerHTML = "00";
+    hourElmt.innerHTML = "00";
+  }
+
+  return {
+    startStop: startStop,
+    reset: reset
+  };
+})();
+
+window.startStop = timerModule.startStop;
+window.reset = timerModule.reset;
+============================================================
+Next, create two buttons, one named START and another named RESET. For the start button, be sure to set the static ID to START.
+
+Then create a Dynamic Action for the click event START button. Set the action to Execute JavaScript Code and set the code to startStop();
+
+Finally, add a Dynamic Action for the click event RESET button. Set the action to Execute JavaScript Code to reset();
+
+Just a few notes:
+
+The HTML no longer has the buttons, the example uses regular APEX buttons. The code that updates
+I cached the HTML elements since they were being referred to so frequently.
+Because the code uses the revealing module pattern, only two functions needed to be exposed globally.
+
+
+=================== 2nd Sestem ==========================
+this is html code. this heading i added into static content. 
+I think this fucntion need to call in button of oracle apex onclick="startStop()"
+.......................................
+<h1>
+  <span id="hour">00</span> :
+  <span id="min">00</span> :
+  <span id="sec">00</span> :
+  <span id="milisec">00</span>
+</h1>
+
+<button onclick="startStop()" id="start">Start</button>
+<button onclick="reset()">Reset</button>
+================================
+I have javascript of stopwatch i want to start stop with oracle apex button. 
+i create button and create dynamic action with Execute Javascript expression and paste javasctipt but 
+it doesn't run.
+...................................
+var x;
+var startstop = 0;
+
+function startStop() { /* Toggle StartStop */
+
+  startstop = startstop + 1;
+
+  if (startstop === 1) {
+    start();
+    document.getElementById("start").innerHTML = "Stop";
+  } else if (startstop === 2) {
+    document.getElementById("start").innerHTML = "Start";
+    startstop = 0;
+    stop();
+  }
+
+}
+
+
+function start() {
+  x = setInterval(timer, 10);
+} /* Start */
+
+function stop() {
+  clearInterval(x);
+} /* Stop */
+
+var milisec = 0;
+var sec = 0; /* holds incrementing value */
+var min = 0;
+var hour = 0;
+
+/* Contains and outputs returned value of  function checkTime */
+
+var miliSecOut = 0;
+var secOut = 0;
+var minOut = 0;
+var hourOut = 0;
+
+/* Output variable End */
+
+
+function timer() {
+  /* Main Timer */
+
+
+  miliSecOut = checkTime(milisec);
+  secOut = checkTime(sec);
+  minOut = checkTime(min);
+  hourOut = checkTime(hour);
+
+  milisec = ++milisec;
+
+  if (milisec === 100) {
+    milisec = 0;
+    sec = ++sec;
+  }
+
+  if (sec == 60) {
+    min = ++min;
+    sec = 0;
+  }
+
+  if (min == 60) {
+    min = 0;
+    hour = ++hour;
+
+  }
+
+
+  document.getElementById("milisec").innerHTML = miliSecOut;
+  document.getElementById("sec").innerHTML = secOut;
+  document.getElementById("min").innerHTML = minOut;
+  document.getElementById("hour").innerHTML = hourOut;
+
+}
+
+
+/* Adds 0 when value is <10 */
+
+
+function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+
+function reset() {
+
+
+  /*Reset*/
+
+  milisec = 0;
+  sec = 0;
+  min = 0
+  hour = 0;
+
+  document.getElementById("milisec").innerHTML = "00";
+  document.getElementById("sec").innerHTML = "00";
+  document.getElementById("min").innerHTML = "00";
+  document.getElementById("hour").innerHTML = "00";
+
+}

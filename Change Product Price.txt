@@ -1,0 +1,18 @@
+javascript:$s('P90_COST_P','#COST_PRICE#'); javascript:$s('P90_SELLING_P','#SELLING_PRICE#'); javascript:$s('P90_DISCOUNT_P','#DISCOUNT#'); javascript:$s('P90_LAST_PRICE','#ORIGINAL_PRICE#'); javascript:$s('P90_PRO_ID','#PRODUCT_ID#'); javascript:$s('P90_PRO_COD','#PRODUCT_CODE#');javascript:$s('P90_P_CODE','#PRODUCT_CODE#');javascript:$s('P90_P_NAME','#PRODUCT_NAME#');
+
+class="change-price-js t-Button t-Button--hot t-Button--small t-Button--stretch"
+
+=========================
+Change Product Details
+
+
+javascript:$s('P91_PRO_ID','#PRODUCT_ID#');
+javascript:$s('P91_P_CODE','#PRODUCT_CODE#');
+javascript:$s('P91_P_NAME','#PRODUCT_NAME#');
+javascript:$s('P91_COLOR','#COLOR#');
+javascript:$s('P91_MAIN_MATERIAL','#MAIN_MATERIAL#');
+javascript:$s('P91_GENDER','#GENDER#');
+javascript:$s('P91_STYLE','#STYLE#');
+javascript:$s('P91_BRAND','#BRAND#');
+javascript:$s('P91_PRODUCT_TYPE','#PRODUCT_TYPE#');
+javascript:$s('P91_OTHERS','#OTHERS#');

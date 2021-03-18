@@ -1,0 +1,66 @@
+================ 1st ===============
+১০২ নাম্বার পেইজে ব্যবহার করা হইয়াছে।
+HTML Header এর মধ্যে দিতে হবে। 
+
+function PageStart(){
+     if ($x('P102_ITEM_SIZE').value == "") 
+     {
+         $x_disableItem('P102_QTY',true);
+    }
+     else {
+         $x_disableItem('P102_QTY',false);
+  }
+ }
+Page HTML Body Attribute এর মধ্যে  
+onchange="PageStart();" দিতে হবে। 
+==============================================
+
+================ 2nd ===============
+function PageStart(){
+   if($v("P31_START_ENABLED")=='Y') {
+      EnableItems();
+   } else {
+      DisableItems();
+   };
+};
+================ 3rd ===============
+function DisableItems()
+{
+   $s("P31_START_ENABLED", 'N');
+   $x_disableItem('P31_TITLE',true);
+};
+function EnableItems()
+{
+   $s("P31_START_ENABLED", 'Y');
+   $x_disableItem('P31_TITLE',false);
+};
+================== 4th ========================
+ function PageStart(){
+ if ($x('P31_TEST2').value == "") {
+ EnableItems();
+ }
+ else {
+ DisableItems();
+  }
+ }
+===================== 5th =====================
+$(document).ready(function() {
+
+    $('#P161_FREQUENCY').change(function() {
+
+        var str = $('#P161_FREQUENCY :selected').val();
+        if (str == 'WEEKLY' ¦¦ str == 'DAILY' ¦¦ str == 'AS_NECESSARY') {
+            $('label[for=P161_DUE_DATE],#P161_DUE_DATE,#P161_DUE_DATE_IMG').hide();
+            $('label[for=P161_COMPLETED_DATE],#P161_COMPLETED_DATE,#P161_COMPLETED_DATE_IMG').hide();
+
+        }
+        else {
+            $('label[for=P161_DUE_DATE],#P161_DUE_DATE,#P161_DUE_DATE_IMG').show();
+            $('label[for=P161_COMPLETED_DATE],#P161_COMPLETED_DATE,#P161_COMPLETED_DATE_IMG').show();
+        }
+
+    });
+
+});
+==========================================================
+1. document.getElementById("P1_TEXT").disabled = true;

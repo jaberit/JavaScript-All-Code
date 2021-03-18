@@ -1,0 +1,18 @@
+$(document).ready(function() {
+
+    $('#P161_FREQUENCY').change(function() {
+
+        var str = $('#P161_FREQUENCY :selected').val();
+        if (str == 'WEEKLY' ¦¦ str == 'DAILY' ¦¦ str == 'AS_NECESSARY') {
+            $('label[for=P161_DUE_DATE],#P161_DUE_DATE,#P161_DUE_DATE_IMG').hide();
+            $('label[for=P161_COMPLETED_DATE],#P161_COMPLETED_DATE,#P161_COMPLETED_DATE_IMG').hide();
+
+        }
+        else {
+            $('label[for=P161_DUE_DATE],#P161_DUE_DATE,#P161_DUE_DATE_IMG').show();
+            $('label[for=P161_COMPLETED_DATE],#P161_COMPLETED_DATE,#P161_COMPLETED_DATE_IMG').show();
+        }
+
+    });
+
+});

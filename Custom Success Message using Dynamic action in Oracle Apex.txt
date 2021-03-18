@@ -1,0 +1,4 @@
+Create a Dynamic Action
+Create a True Action
+Action = Execute JavaScript Code
+Code =  apex.message.showPageSuccess('Action Processed.');

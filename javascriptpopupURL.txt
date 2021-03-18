@@ -1,0 +1,7 @@
+1.	javascript:popupURL('f?p=&APP_ID.:99:&APP_SESSION.:::99:P99_PRODUCT_DETELS_ID:#PRODUCT_DETELS_ID#')
+2.	javascript:popupURL('f?p=&APP_ID.:79:&APP_SESSION.:::79:P79_OID:#OID#')
+3.	javascript:popupURL('f?p=&APP_ID.:99:&APP_SESSION.:::99:P99_PRODUCT_DETELS_ID:#PRODUCT_DETELS_ID#')
+	(((((Icon- <img src="#IMAGE_PREFIX#menu/pencil2_16x16.gif" alt="">\ Use This URL)))))
+4.	javascript:popupURL("f?p='|| V('APP_ID') ||':99:'|| V('SESSION') ||'::NO:99:P99_PRODUCT_DETELS_ID:'||PRODUCT_DETELS_ID||'")
+	
+5.	javascript:popupURL('f?p=&APP_ID.:84:&APP_SESSION.:::84:P84_OID:#OID#')

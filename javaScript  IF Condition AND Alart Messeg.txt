@@ -1,0 +1,50 @@
+========================= 1st =========================
+Function and Global Variable Declaration এর মধ্যে দিতে হবে। 
+.....................
+
+function fnc_calcTotalSal() {
+    var curr_qty, chan_qty, qty_valu;
+      
+      curr_qty = parseFloat($v("P103_INLINE_CURRENT_QTY"), 10) ? parseFloat($v("P103_INLINE_CURRENT_QTY"), 10) : 0;
+      chan_qty = parseFloat($v("P103_INLINE_CHANGE_QTY"), 10) ? parseFloat($v("P103_INLINE_CHANGE_QTY"), 10) : 0;
+    
+    if (chan_qty < curr_qty)
+{
+          qty_valu = curr_qty - chan_qty;
+          $s("P103_INLINE_CURRENT_QTY_VALUE", parseFloat(qty_valu, 10));   
+          return true; 
+      }
+      else {    
+          apex.message.confirm( "পন্যর সংখ্যাটি সঠিকভাবে দিন !");             
+          return false;   
+          
+    } 
+
+}
+..............................................
+onchange="fnc_calcTotalSal();"
+
+========================= 2nd =========================
+Function and Global Variable Declaration এর মধ্যে দিতে হবে। 
+.....................
+function fnc_calcTotalSal() {
+    var curr_qty, chan_qty, qty_valu;
+      
+      curr_qty = parseFloat($v("P104_CURRENT_QTY"), 10) ? parseFloat($v("P104_CURRENT_QTY"), 10) : 0;
+      chan_qty = parseFloat($v("P104_CHANGE_QTY"), 10) ? parseFloat($v("P104_CHANGE_QTY"), 10) : 0;
+
+    if (n_bonus < n_salary)
+      {
+          apex.message.clearErrors();
+          qty_valu = curr_qty - chan_qty;
+
+      }
+      else {
+          apex.message.confirm( "পন্যর সংখ্যাটি সঠিকভাবে দিন !");
+          qty_valu = 0;
+      }
+      $s("P104_QTY_VALU", parseFloat(qty_valu, 10));
+
+}
+..............................................
+onchange="fnc_calcTotalSal();"

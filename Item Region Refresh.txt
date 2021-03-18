@@ -1,0 +1,47 @@
+================ 1st ===============
+১০২ নাম্বার পেইজে ব্যবহার করা হইয়াছে।
+HTML Header এর মধ্যে দিতে হবে। 
+
+  function regionrefresh(){
+     if ($x('P68_QTY').value == 0) 
+     {
+         apex.region("Product_Sales_Page").refresh(false);
+    }
+     else {
+         apex.region("Product_Sales_Page").refresh(true);
+  }
+ }
+
+Item Attribute এর মধ্যে  
+onchange="regionrefresh();" দিতে হবে। 
+==============================================
+
+================ 2nd ===============
+function PageStart(){
+   if($v("P31_START_ENABLED")=='Y') {
+      EnableItems();
+   } else {
+      DisableItems();
+   };
+};
+================ 3rd ===============
+function DisableItems()
+{
+   $s("P31_START_ENABLED", 'N');
+   $x_disableItem('P31_TITLE',true);
+};
+function EnableItems()
+{
+   $s("P31_START_ENABLED", 'Y');
+   $x_disableItem('P31_TITLE',false);
+};
+================== 4th ========================
+ function PageStart(){
+ if ($x('P31_TEST2').value == "") {
+ EnableItems();
+ }
+ else {
+ DisableItems();
+  }
+ }
+==========================================

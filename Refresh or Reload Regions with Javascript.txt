@@ -1,0 +1,11 @@
+Step 1 : Create Page  
+Step 2 : Create a region on the Page (created in step-1)
+ Type : Interactive Grid
+ Page Items to Submit : ITEM NAME (i.e : P13701_XCUS  used in where condition)
+ Advanced / Static ID : CUS_PARTNER_REGION
+Step 3 : Create Dynamic Action 
+ Event : Change 
+ Selection Type : Item 
+ ITEM : ITEM NAME (i.e : P13701_XCUS)
+ Action (True): Execute JavaScript Code
+ Code : apex.region("CUS_PARTNER_REGION").refresh();

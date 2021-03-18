@@ -1,0 +1,40 @@
+<script type="text/javascript">
+function getVal(pNd){
+return ($v(pNd)!="")?parseFloat($v(pNd)):0;
+}
+    function calcItems(){
+        $s('P29_SUB_TOTAL',getVal('P29_TOTAL')-getVal('P29_DISCOUNT')+getVal('P29_VAT'));
+}
+
+    
+</script>
+
+
+
+
+<script language="JavaScript" type="text/javascript">
+
+ function SubaddTotal()
+ {
+  var items = document.getElementsByName("f06"); // Tabular form column to add up
+ 
+  $total = 0;
+  $itemValue = 0;
+  for (var i = 0; i < items.length; i++)
+  { 
+   // if non-numeric character was entered, it will be considered as 0,
+   // isNaN returns true if anything but number was entered
+   if(isNaN(items[i].value) || items[i].value == null || items[i].value == "")
+    $itemValue = 0;
+   else
+    $itemValue = parseFloat(items[i].value); // convert to number
+ 
+   $total =$total+ $itemValue; // add up
+  }
+ 
+  // $x sets the text field to be updated to the column total just calculated
+  $x('P68_SUB_TOTAL').value = $total;
+ }
+ </script>
+
+

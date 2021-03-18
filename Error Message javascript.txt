@@ -1,0 +1,95 @@
+================== 1st =====================
+পেইজের উপর দিয়ে Error দিবে। 
+
+apex.message.setThemeHooks({
+    beforeShow: function( pMsgType, pElement$ ){
+        if ( pMsgType === apex.message.TYPE.ERROR ) {
+          alert('MESSAGE Triggering');               
+        }
+    }
+});
+......................................
+apex.message.setThemeHooks({
+    beforeShow: function( pMsgType, pElement$ ){
+      if ( pMsgType === apex.message.TYPE.ERROR ) {
+        if ( $('li.a-Notification-item:contains("LINOTEST")').length > 0 ){
+             alert('Good point');               
+            }
+        }
+    }
+});
+================== 2nd =====================
+আইটেমের নিচে ছোট করে inline Error দিবে। 
+
+Display Error Messages using JavaScript in Oracle Apex
+To display the custom error message for an item follow these steps:
+
+Create the following JavaScript function in the 
+“Function and Global variable declare” section of the page:
+
+function showError(pData, pItem) {
+    apex.item(pItem).setFocus();
+    apex.message.clearErrors();
+    apex.message.showErrors([{
+            type: "error",
+            location: "inline",
+            pageItem: pItem,
+            message: pData,
+            unsafe: false
+        },
+        {
+            type: "error",
+            location: "inline",
+            message: "An error has occurred.",
+            unsafe: false
+        }
+    ]);
+}
+Now suppose you want to validate the salary which should be greater than from 2000.
+Then create a dynamic action on the salary field and select the event Lose Focus.
+And create a TRUE action as Execute JavaScript code and add the following code in it:
+
+if ($v("P3_SALARY") < 2000) {
+    showError("Salary must be greater than 2000.", 'P3_SALARY');
+} else {
+    apex.message.clearErrors();
+}
+
+================== 3nd =====================
+পেইজের মধ্যে Error দিবে। 
+
+apex.message.clearErrors();
+apex.message.showErrors([
+  {
+    type: apex.message.TYPE.ERROR,
+    location: ["page", "inline"],
+    pageItem: "P1_DEMO",
+    message: "This field is required",
+    unsafe: false
+  },
+  {
+    type: apex.message.TYPE.ERROR,
+    location: ["page"],
+    message: "Page level error",
+    unsafe: false
+  }
+]);
+
+কন্ডিশনের মধ্যে দিতে হবে......................
+apex.message.clearErrors();
+
+apex.message.showPageSuccess( "It works!" );
+==================== 4th ============================
+The following example displays a confirmation message 
+       Are you sure?, and if OK is pressed executes the deleteIt() function.
+This region should register a visibility check function as follows:
+
+apex.message.confirm( "Are you sure?", function( okPressed ) { 
+    if( okPressed ) {
+        deleteIt();
+    }
+});
+......................
+এটাকেই আমি কাষ্টমাইজ করে apex.message.confirm( "পন্যর সংখ্যাটি সঠিকভাবে দিন !"); 
+======================
+

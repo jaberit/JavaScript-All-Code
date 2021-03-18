@@ -1,0 +1,43 @@
+Get Summation Doing Checkbox Checked In Oracle Apex Via JavaScript
+=====================
+
+To Get Summation By Doing Checkbox Checked In Oracle Apex Via JavaScript.
+
+Step 1. Create a CheckBox item and with Some  Numbers by Query or Static. Like :
+
+     select 100,100 a from dual
+     union
+     select 200,200 a from dual
+     union
+     select 300,300 c from dual
+
+Step 2. Create another item with  Textfield type to show summation result .
+
+Step 3. Now Copy-Pest the function to
+
+Page Properties  > Function and Global Variable Declaration 
+
+/* P43_SUM = Textfield item ID where we show the result.
+P43_NEW = Checkbox item from where we get value. 
+P43_NEW_ = First portion of every Checkbox ID . */
+
+ function findTotal() {
+        var arr = document.getElementsByName('P43_NEW');
+        var tot = 0;
+        var count= 0 ;
+    for (var i = 0; i<arr.length; i++) {  
+        if ($('#P43_NEW_'+i).prop('checked') == true) {      
+            count = count + 1 ;
+            tot += parseInt(arr[i].value);
+        document.getElementById('P43_SUM').value =  tot;
+         }
+         else  if (count == 0 ){
+               document.getElementById('P43_SUM').value =  0;
+         }         
+      }
+    } 
+
+Step 4. Finally  Call the JavaScript Function Like.
+Checkbox item properties > Advanced  > Custom Attributes
+
+     onchange="findTotal();"
